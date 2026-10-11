@@ -1,0 +1,15 @@
+# datasets y salidas pesadas
+*.csv
+!resultado_esperado/*.csv
+!01_eleccion_cantidad_de_arboles/log_original/*.csv
+*.csv.gz
+*.rds
+*.RData
+salida/
+modelos/
+# temporales de R
+.Rhistory
+.Rapp.history
+.RData
+.Rproj.user/
+*.tmp

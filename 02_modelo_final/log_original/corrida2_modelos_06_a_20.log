@@ -1,0 +1,52 @@
+﻿R: R version 4.3.1 (2023-06-16 ucrt) | LightGBM: zlightgbm 4.6.0.99 
+semillas: 125269 175853 691651 593507 593083 371321 582767 915197 411721 974537 160981 267671 160483 986633 878987 151201 306091 183397 393109 455047 
+filas: 983061  columnas: 154 
+   foto_mes      N
+1:   202103 162900
+2:   202104 163284
+3:   202105 163768
+4:   202106 164114
+5:   202107 164348
+6:   202108 164647
+    foto_mes clase_ternaria      N
+ 1:   202103         BAJA+1   1019
+ 2:   202103         BAJA+2    960
+ 3:   202103       CONTINUA 160921
+ 4:   202104         BAJA+1    964
+ 5:   202104         BAJA+2   1139
+ 6:   202104       CONTINUA 161181
+ 7:   202105         BAJA+1   1143
+ 8:   202105         BAJA+2    870
+ 9:   202105       CONTINUA 161755
+10:   202106         BAJA+1    874
+11:   202106         BAJA+2   1098
+12:   202106       CONTINUA 162142
+13:   202107         BAJA+1   1103
+14:   202107           <NA> 163245
+15:   202108           <NA> 164647
+positivos 202103-04: 4082 | ancla: 4082 
+variables base: 152 | ancla: 152 
+ranking apagado: se usan los valores originales
+columnas del modelo: 760 | ancla: 760 
+matriz final: 654066 x 760 (4.0 GB) | futuro 202108: 164647 clientes | positivos de train: 8067 (1.23%) | historia 0.2 min
+[1/20] prof_s125269 ya existe
+[2/20] prof_s175853 ya existe
+[3/20] prof_s691651 ya existe
+[4/20] prof_s593507 ya existe
+[5/20] prof_s593083 ya existe
+[6/20] prof_s371321 listo en 15.0 min | acumulado 15 min
+[7/20] prof_s582767 listo en 13.9 min | acumulado 29 min
+[8/20] prof_s915197 listo en 12.4 min | acumulado 41 min
+[9/20] prof_s411721 listo en 12.4 min | acumulado 54 min
+[10/20] prof_s974537 listo en 12.5 min | acumulado 66 min
+[11/20] prof_s160981 listo en 12.3 min | acumulado 78 min
+[12/20] prof_s267671 listo en 12.4 min | acumulado 91 min
+[13/20] prof_s160483 listo en 12.4 min | acumulado 103 min
+[14/20] prof_s986633 listo en 12.4 min | acumulado 116 min
+[15/20] prof_s878987 listo en 12.3 min | acumulado 128 min
+[16/20] prof_s151201 listo en 12.5 min | acumulado 141 min
+[17/20] prof_s306091 listo en 12.4 min | acumulado 153 min
+[18/20] prof_s183397 listo en 13.1 min | acumulado 166 min
+[19/20] prof_s393109 listo en 12.7 min | acumulado 179 min
+[20/20] prof_s455047 listo en 12.3 min | acumulado 191 min
+archivos validados: 22 | FIN E01_prof2000 | minutos totales: 191.4 
