@@ -45,9 +45,7 @@ El corte de **10.000** envios se fijo a mano dentro de lo que acepta el bot (800
 
 ```
 README.md
-comparar_resultado.R                         compara lo generado con el archivo entregado
 .gitignore
-entorno/                                     versiones de R y de los paquetes usados
 resultado_esperado/
     E01_prof2000_ens50m_k10000.csv           archivo exacto subido como entrega final
     MD5.txt, SHA256.txt                      huellas del archivo
@@ -62,7 +60,7 @@ resultado_esperado/
 ## Requisitos y versiones
 
 - R 4.3.1 (ucrt, Windows 11), `data.table` 1.14.8 y `zlightgbm` 4.6.0.99 (el paquete LightGBM de la catedra; si no esta, el script usa
-  `lightgbm`, pero el resultado puede variar). El detalle completo esta en `entorno/sessionInfo.txt`.
+  `lightgbm`, pero el resultado puede variar). Sistema: Windows 11 x64, R 4.3.1 (ucrt), `Matrix` 1.5-4.1, `jsonlite` 1.8.7.
 - Instalacion de zlightgbm: `install.packages("https://storage.googleapis.com/open-courses/dmeyf2025-e4a2/zlightgbm_4.6.0.99.tar.gz", repos = NULL, type = "source")`
 - RAM: la matriz de entrenamiento (654.066 filas x 760 columnas) ocupa unos 4 GB; el proceso llega a 7 GB. Recomendados 16 GB.
 - Threads: `num_threads = 14` fijo en el script (la corrida original uso 14 hilos en una PC de 16 nucleos).
@@ -86,7 +84,7 @@ Poner `competencia_01_crudo.csv` en la carpeta desde donde se ejecuta (o definir
 |---|---|---|---|
 | 1 (opcional) | `Rscript 01_eleccion_cantidad_de_arboles/eleccion_cantidad_de_arboles.R` | `salida/pseudo_profundo_por_arboles.csv` | 55 min |
 | 2 | `Rscript 02_modelo_final/modelo_final.R` | 50 archivos `salida/modelos/prob_prof_s<semilla>.csv` y `salida/entrega/ensamble/E01_prof2000_ens50m_k10000.csv` | 10 a 12 h (12 a 15 min por modelo) |
-| 3 | `Rscript comparar_resultado.R` | comparacion contra el archivo entregado | segundos |
+| 3 | `md5sum salida/entrega/ensamble/E01_prof2000_ens50m_k10000.csv` y comparar con `resultado_esperado/MD5.txt` | MD5 del archivo generado | segundos |
 
 El paso 1 no alimenta al paso 2: es la evidencia de la eleccion de los 2000 arboles, que en el paso 2 figura en `PARAM$arboles`.
 El script del paso 2 es reanudable: si se corta, se vuelve a ejecutar y salta los modelos ya terminados.
@@ -108,7 +106,6 @@ No se repitio la corrida completa (50 modelos, unas 10 a 12 horas). Se verifico 
    | `prob_prof_s125269.csv` | a047f5c7a1fc6d6f11c7fe8683028689 | a047f5c7a1fc6d6f11c7fe8683028689 |
    | `prob_prof_s175853.csv` | fa94c6f765ab90386dde4af729eb6f4f | fa94c6f765ab90386dde4af729eb6f4f |
 
-   El log de esa verificacion esta en `02_modelo_final/log_original/verificacion_2_modelos.log`.
 2. **Tramo posterior a los modelos.** A partir de las 50 probabilidades guardadas de la corrida original, el promedio por cliente y los 10.000
    mejores dan exactamente los mismos ids y en el mismo orden que el archivo entregado.
 3. **Lo que no se verifico.** No se reentrenaron los otros 48 modelos. El script `01_eleccion_cantidad_de_arboles/eleccion_cantidad_de_arboles.R`
@@ -120,4 +117,4 @@ No se repitio la corrida completa (50 modelos, unas 10 a 12 horas). Se verifico 
 
 LightGBM no se corrio con `deterministic = TRUE` y entrena con varios hilos. Con otra cantidad de hilos, otra version del paquete u otro
 sistema operativo es posible que las probabilidades cambien en los ultimos decimales y que algunos clientes del borde del corte de 10.000
-cambien. `comparar_resultado.R` informa el MD5, cuantos ids coinciden y si el archivo es identico.
+cambien. El archivo generado debe tener el MD5 de `resultado_esperado/MD5.txt`; si no coincide, conviene comparar cuantos ids tienen en comun.
